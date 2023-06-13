@@ -136,6 +136,8 @@ To get the phylogenetic tree we will use the R packages _ape_ and _phangorn_. Th
 
 Also, it is important to take in mind the **tree labels for nodes**. If we calculate the bootstrap for the tree using _phangorn_, node labels will be changed by the bootstrap values. This will create issues when using _Count_, since it uses the tree node labels to name columns corresponding to ancestors. Therefore, if we don't change the node labels we won't be able to distinguish among these columns. **But, we also need the bootstrap values**, so the best option will be to add the node label a unique text but keeping the bootstrap value (e.g. from "100" to "Node1BS100"). Then, when plotting the tree with all the data we can parse the node labels again and keep only the bootstrap values.
 
+Since this will be a large phylogenetic tree, maybe we would have to consider the type or rearrangement used when calculating the tree. **NNI** (nearest neighbor interchange) algorithm is faster and sometimes get as good topologies as **stochastic** algoirthm (IQ-tree like), which otherwise gets very robust topologies.
+
 ## 5. Ancestral Reconstruction and gene gain/loss estimation
 
 For this step we will use the program _Count_. To use it we need to starting files: a phylogenetic tree and a Family Size table. As tree, we will use the one we have built using the concatenated MSA with Core Famliy proteins. As is said in the previous step, genomes names on the Family Size table and on the tree must match completely and can't have any non-alphanumerical character.
